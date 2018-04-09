@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ProjectScoreKeeper</string>
+    <string name="welcome_message">To win a round, you must play at least 5 battles. The winning player can use the buttons to increase points. At every 5 points, the player with the most points gets a score.</string>
 </resources>
