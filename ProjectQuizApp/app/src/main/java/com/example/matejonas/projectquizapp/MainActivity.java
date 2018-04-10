@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         answer2.setText("");
         submitted = false;
         button.setText("Submit");
-        Toast.makeText(this, "The quiz has been reset!", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "The quiz was reset!", Toast.LENGTH_LONG).show();
     }
 
     private boolean isFinished() {
