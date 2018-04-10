@@ -30,13 +30,51 @@ public class MainActivity extends AppCompatActivity {
         // Set the content of the activity to use the activity_main.xml layout file
         setContentView(R.layout.activity_main);
 
-        NumbersClickListener clickListener = new NumbersClickListener();
-
         //Find the view that shows hte numbers category
         TextView numbers = (TextView) findViewById(R.id.numbers);
 
         //Set a clickListener in that View
-        numbers.setOnClickListener(clickListener);
+//        numbers.setOnClickListener(new NumbersClickListener());
+        numbers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Create a new intent to open the {@link NumbersActivity}
+                Intent numbersIntent = new Intent(MainActivity.this, NumbersActivity.class);
+
+                //Start the new activity
+                startActivity(numbersIntent);
+            }
+        });
+
+        TextView colors = (TextView) findViewById(R.id.colors);
+
+        colors.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent colorsIntent = new Intent(MainActivity.this, ColorsActivity.class);
+                startActivity(colorsIntent);
+            }
+        });
+
+        TextView family = (TextView) findViewById(R.id.family);
+
+        family.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent familyIntent = new Intent(MainActivity.this, FamilyActivity.class);
+                startActivity(familyIntent);
+            }
+        });
+
+        TextView phrases = (TextView) findViewById(R.id.phrases);
+
+        phrases.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent phrasesIntent = new Intent(MainActivity.this, PhrasesActivity.class);
+                startActivity(phrasesIntent);
+            }
+        });
     }
 
     //android:onClick="openNumbersList"
