@@ -25,10 +25,6 @@ public class PlayingActivity extends AppCompatActivity {
 
     private ImageView mPlayPauseButton;
 
-    private ImageView mPreviousButton;
-
-    private ImageView mNextButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +46,7 @@ public class PlayingActivity extends AppCompatActivity {
         mSong.setText(mCurrentSong.getSong());
 
         mPlayPauseButton = findViewById(R.id.play_pause_button);
+        mPlayPauseButton.setOnClickListener(getPlayPauseButtonListener());
 
         ImageView previousButton = findViewById(R.id.previous_button);
         previousButton.setOnClickListener(getPreviousButtonListener());
@@ -57,7 +54,22 @@ public class PlayingActivity extends AppCompatActivity {
         ImageView nextButton = findViewById(R.id.next_button);
         nextButton.setOnClickListener(getNextButtonListener());
 
-        mPlayPauseButton.setOnClickListener(getPlayPauseButtonListener());
+        ImageView backButton = findViewById(R.id.back_to_playlist);
+        backButton.setOnClickListener(getBackButtonListener());
+    }
+
+    @NonNull
+    private View.OnClickListener getPlayPauseButtonListener() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mPlayPauseButton.getDrawable().getConstantState().equals(getDrawable(android.R.drawable.ic_media_play).getConstantState())) {
+                    mPlayPauseButton.setImageResource(android.R.drawable.ic_media_pause);
+                } else {
+                    mPlayPauseButton.setImageResource(android.R.drawable.ic_media_play);
+                }
+            }
+        };
     }
 
     @NonNull
@@ -103,15 +115,12 @@ public class PlayingActivity extends AppCompatActivity {
     }
 
     @NonNull
-    private View.OnClickListener getPlayPauseButtonListener() {
+    private View.OnClickListener getBackButtonListener() {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mPlayPauseButton.getDrawable().getConstantState().equals(getDrawable(android.R.drawable.ic_media_play).getConstantState())) {
-                    mPlayPauseButton.setImageResource(android.R.drawable.ic_media_pause);
-                } else {
-                    mPlayPauseButton.setImageResource(android.R.drawable.ic_media_play);
-                }
+                Intent mainActivityIntent = new Intent(PlayingActivity.this, MainActivity.class);
+                startActivity(mainActivityIntent);
             }
         };
     }
